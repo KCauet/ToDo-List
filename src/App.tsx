@@ -15,9 +15,16 @@ function App() {
           <section className='title'>
             <h1>Todo List</h1>
           </section>
+
+          <section className='inputBox'>
+            <input type="text" />
+          </section>
           
           <section className='itemBox'>
             <section className='itemList'>
+              <Item />
+              <Item />
+              <Item />
               <Item />
             </section>
           </section>
