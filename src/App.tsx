@@ -4,6 +4,7 @@ import './App.css'
 import Item from './components/Item'
 import type { Task } from './components/Item'; // Tem que escrever o tipo de variavel antes de importar, exemplo o type
 
+
 function App() {
 
   const [taskList, setTaskList] = useState<Task[]>([]);
@@ -18,8 +19,7 @@ function App() {
       }
 
       setTaskList([...taskList, item])
-
-      console.log(taskList)
+      
     }
   }
 
@@ -43,7 +43,13 @@ function App() {
           
           <section className='itemBox'>
             <section className='itemList'>
-
+              {
+                taskList.map((item, index) => (
+                  <div key={index}>
+                    <Item id={index} description={item.description}/>
+                  </div>
+                ))
+              }
             </section>
           </section>
 

@@ -11,10 +11,10 @@ function Item(props: Task) {
         <>
             <div className='itemBoxContent'>
                 <section>
-                    <h2>Task #{props.id}</h2>
+                    <h2>Task #{props.id + 1}</h2>
                 </section>
                 <section>
-                    <h2>{props.description}   item content as if it was important to be read or seen</h2>
+                    <h2>{props.description}</h2>
                 </section>
             </div>
         </>

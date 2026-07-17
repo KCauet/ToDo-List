@@ -62,4 +62,5 @@ input {
   text-align: center;
   overflow-wrap: anywhere;
   border-radius: 20px;
+  align-items: center;
 }
