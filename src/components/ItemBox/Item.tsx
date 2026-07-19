@@ -7,13 +7,26 @@ export type Task = {
     done: boolean;
 }
 
-function Item(props: Task) {
+interface ItemProps {
+    id: number;
+    description: string;
+    done: boolean;
+    onDelete: (id: number) => void;
+}
+
+function Item(props: ItemProps) {
 
     return (
         <>
             <div className='itemBoxContent'>
                 <section>
-                    <ItemBar />
+
+                    <ItemBar
+                    id={props.id}
+                    done={props.done}
+                    description={props.description}
+                    onDelete={props.onDelete}/>
+                    
                     <h2>Task #{props.id + 1}</h2>
                 </section>
                 <section>

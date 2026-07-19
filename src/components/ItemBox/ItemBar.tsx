@@ -1,5 +1,12 @@
 
-function ItemBar() {
+interface ItemProps {
+    id: number;
+    description: string;
+    done: boolean;
+    onDelete: (id: number) => void;
+}
+
+function ItemBar(props: ItemProps) {
     return (
         <>
         <div className="itemBarBox">
@@ -10,7 +17,9 @@ function ItemBar() {
                 </div>
                 <div>
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={
+                        () => {props.onDelete(props.id)}
+                        }>Delete</button>
                 </div>
             </section>
             

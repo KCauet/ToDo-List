@@ -19,12 +19,18 @@ function App() {
 
   function addTask() {
       let item: Task = {
-        id: taskList.length,
+        id: taskList.length > 0 ? taskList[taskList.length - 1].id + 1 : 0,
         description: curDescription,
         done: false
       }
 
       setTaskList([...taskList, item])
+      setCurDescription('')
+  }
+
+  function deleteTask(id: number) {
+    const novaLista = taskList.filter(task => task.id !== id);
+    setTaskList(novaLista);
   }
 
   return (
@@ -50,9 +56,9 @@ function App() {
           <section className='itemBox'>
             <section className='itemList'>
               {
-                taskList.map((item, index) => (
-                  <div key={index}>
-                    <Item id={index} description={item.description}/>
+                taskList.map((item) => (
+                  <div key={item.id}>
+                    <Item id={item.id} description={item.description} done={item.done} onDelete={deleteTask} />
                   </div>
                 ))
               }
