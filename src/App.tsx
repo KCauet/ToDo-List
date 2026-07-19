@@ -4,6 +4,7 @@ import './App.css'
 import Item from './components/Item'
 import type { Task } from './components/Item'; // Tem que escrever o tipo de variavel antes de importar, exemplo o type
 
+// starting Version 2 now
 
 function App() {
 
