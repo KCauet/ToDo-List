@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
-import Item from './components/Item'
-import type { Task } from './components/Item'; // Tem que escrever o tipo de variavel antes de importar, exemplo o type
-
-// starting Version 2 now
+import Item from './components/ItemBox/Item'
+import type { Task } from './components/ItemBox/Item'; // Tem que escrever o tipo de variavel antes de importar, exemplo o type
 
 function App() {
 
@@ -13,15 +11,20 @@ function App() {
 
   function handleConfirmation(event: any) {
     if (event.key === 'Enter') {
+      
+      addTask()
 
+    }
+  }
+
+  function addTask() {
       let item: Task = {
         id: taskList.length,
-        description: curDescription
+        description: curDescription,
+        done: false
       }
 
       setTaskList([...taskList, item])
-      
-    }
   }
 
   return (
@@ -34,12 +37,14 @@ function App() {
           </section>
 
           <section className='inputBox'>
-            <input 
+            <input
+              className='inputMain'
               type="text"
               value={curDescription}
               onChange={(event) => {setCurDescription(event.target.value)}}
               onKeyDown={handleConfirmation}
               />
+              <button onClick={addTask}>Add Task</button>
           </section>
           
           <section className='itemBox'>

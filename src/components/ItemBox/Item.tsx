@@ -1,8 +1,10 @@
-import '../App.css'
+import './ItemBar.css'
+import ItemBar from './ItemBar';
 
 export type Task = {
     id: number;
     description: string;
+    done: boolean;
 }
 
 function Item(props: Task) {
@@ -11,6 +13,7 @@ function Item(props: Task) {
         <>
             <div className='itemBoxContent'>
                 <section>
+                    <ItemBar />
                     <h2>Task #{props.id + 1}</h2>
                 </section>
                 <section>

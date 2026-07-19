@@ -1,0 +1,39 @@
+.itemBoxContent {
+  padding-top: 10px;
+  background-color: white;
+  height: 200px;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  text-align: center;
+  overflow-wrap: anywhere;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.header button {
+    background-color: darkgrey;
+    border: none;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.header button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 23px;
+    height: 23px;
+}
+
+.checkbox:hover {
+    cursor: pointer;
+}

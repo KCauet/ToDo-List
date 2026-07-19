@@ -11,7 +11,20 @@ main {
   align-items: center;
 }
 
-input {
+button {
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
+  height: 50px;
+}
+
+button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+
+.inputMain {
   width: 95%;
   min-height: 55px;
   height: 20%;
@@ -19,7 +32,7 @@ input {
   color: white;
   font-size: larger;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   border-radius: 20px;
   border: none;
   padding-left: 5%;
@@ -49,18 +62,4 @@ input {
   justify-content: center;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-}
-
-/* Component styling */
-
-.itemBoxContent {
-  padding-top: 10px;
-  background-color: white;
-  height: 200px;
-  display: grid;
-  grid-template-rows: 1fr 4fr;
-  text-align: center;
-  overflow-wrap: anywhere;
-  border-radius: 20px;
-  align-items: center;
 }
