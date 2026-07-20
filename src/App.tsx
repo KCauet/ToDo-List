@@ -56,9 +56,32 @@ function App() {
     
     })
 
-    console.log(newList)
     setTaskList(newList)
 
+  }
+
+  function updateTaskDone(id: number) {
+    
+    const newList: Task[] = taskList.map((item: Task) => { // Todo loop que o map faz ele é OBRIGADO a retornar algo.
+    // claro tu tá criando uma lista e se tiver um caso de ele n retornar nada n vai dar certo xc
+      
+      {
+        if (item.id === id) {
+          return {
+            id: item.id,
+            description: item.description,
+            done: item.done ? false : true, // isso aqui é verdadeiro (está ativado) ? se sim false, se não, true
+            // basicamente inverte o done
+            // ex: idade >= 16 ? "Pode votar" : "Não pode votar"
+          }
+        } else {
+          return item
+        }
+      }
+    
+    })
+
+    setTaskList(newList)
   }
 
   return (
@@ -92,6 +115,7 @@ function App() {
                     done={item.done}
                     onDelete={deleteTask}
                     onEdit={editTask}
+                    onUpdate={updateTaskDone}
                     />
                   </div>
                 ))

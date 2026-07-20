@@ -13,6 +13,7 @@ export interface ItemProps {
     done: boolean;
     onDelete: (id: number) => void;
     onEdit: (id: number) => void;
+    onUpdate: (id: number) => void;
 }
 
 function Item(props: ItemProps) {
@@ -28,6 +29,7 @@ function Item(props: ItemProps) {
                     description={props.description}
                     onDelete={props.onDelete}
                     onEdit={props.onEdit}
+                    onUpdate={props.onUpdate}
                     />
                     
                     <h2>Task #{props.id + 1}</h2>

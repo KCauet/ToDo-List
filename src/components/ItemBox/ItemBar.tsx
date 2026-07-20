@@ -5,21 +5,28 @@ interface ItemProps {
     done: boolean;
     onDelete: (id: number) => void;
     onEdit: (id: number) => void;
+    onUpdate: (id: number) => void;
 }
 
 function ItemBar(props: ItemProps) {
+
     return (
         <>
         <div className="itemBarBox">
             <section className="header">
                 <div>
-                    <input type="checkbox" className="checkbox"/>
+                    <input type="checkbox"
+                    checked={props.done}
+                    onChange={() => {props.onUpdate(props.id)}}
+                    className="checkbox"/>
+
                     <label htmlFor="">Already Done</label>
                 </div>
                 <div>
                     <button onClick={
                         () => {props.onEdit(props.id)}
                     }>Edit</button>
+                    
                     <button onClick={
                         () => {props.onDelete(props.id)}
                         }>Delete</button>
