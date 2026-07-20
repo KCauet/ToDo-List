@@ -29,8 +29,36 @@ function App() {
   }
 
   function deleteTask(id: number) {
-    const novaLista = taskList.filter(task => task.id !== id);
-    setTaskList(novaLista);
+    const newList = taskList.filter(task => task.id !== id);
+    setTaskList(newList);
+  }
+
+  function editTask(id: number) {
+    const newTask: string | null = prompt("Edit the task here: ")
+    if (newTask === null) {
+      return
+    }
+
+    const newList: Task[] = taskList.map((item: Task) => { // Todo loop que o map faz ele é OBRIGADO a retornar algo.
+    // claro tu tá criando uma lista e se tiver um caso de ele n retornar nada n vai dar certo xc
+      
+      {
+        if (item.id === id) {
+          return {
+            id: item.id,
+            description: newTask,
+            done: item.done
+          }
+        } else {
+          return item
+        }
+      }
+    
+    })
+
+    console.log(newList)
+    setTaskList(newList)
+
   }
 
   return (
@@ -58,7 +86,13 @@ function App() {
               {
                 taskList.map((item) => (
                   <div key={item.id}>
-                    <Item id={item.id} description={item.description} done={item.done} onDelete={deleteTask} />
+                    <Item
+                    id={item.id}
+                    description={item.description}
+                    done={item.done}
+                    onDelete={deleteTask}
+                    onEdit={editTask}
+                    />
                   </div>
                 ))
               }

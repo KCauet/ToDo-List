@@ -4,6 +4,7 @@ interface ItemProps {
     description: string;
     done: boolean;
     onDelete: (id: number) => void;
+    onEdit: (id: number) => void;
 }
 
 function ItemBar(props: ItemProps) {
@@ -16,7 +17,9 @@ function ItemBar(props: ItemProps) {
                     <label htmlFor="">Already Done</label>
                 </div>
                 <div>
-                    <button>Edit</button>
+                    <button onClick={
+                        () => {props.onEdit(props.id)}
+                    }>Edit</button>
                     <button onClick={
                         () => {props.onDelete(props.id)}
                         }>Delete</button>
