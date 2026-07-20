@@ -50,9 +50,9 @@ function App() {
             description: newTask,
             done: item.done
           }
-        } else {
-          return item
         }
+
+        return item
       }
     
     })
@@ -75,9 +75,9 @@ function App() {
             // basicamente inverte o done
             // ex: idade >= 16 ? "Pode votar" : "Não pode votar"
           }
-        } else {
-          return item
         }
+        
+        return item
       }
     
     })
@@ -136,15 +136,14 @@ function App() {
               {
                 taskList.map((item) => {
                   
-                  if (!onlyNotDone) { // Render normal
+                  if (!onlyNotDone) { // Render normal se a caixa não tiver marcada
                     return renderItem(item)
                   }
                   
                   if (item.done === false) {
                     return renderItem(item)
                   }
-                  
-                  
+
                 })
               }
             </section>
