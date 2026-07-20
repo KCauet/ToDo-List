@@ -8,6 +8,7 @@ function App() {
 
   const [taskList, setTaskList] = useState<Task[]>([]);
   const [curDescription, setCurDescription] = useState('');
+  const [onlyNotDone, setOnlyNotDone] = useState(false);
 
   function handleConfirmation(event: any) {
     if (event.key === 'Enter') {
@@ -84,6 +85,21 @@ function App() {
     setTaskList(newList)
   }
 
+  function renderItem(item: Task) {
+    return (
+      <div key={item.id}>
+        <Item
+        id={item.id}
+        description={item.description}
+        done={item.done}
+        onDelete={deleteTask}
+        onEdit={editTask}
+        onUpdate={updateTaskDone}
+        />
+      </div>
+    )
+  }
+
   return (
     <>
       <main>
@@ -102,23 +118,34 @@ function App() {
               onKeyDown={handleConfirmation}
               />
               <button onClick={addTask}>Add Task</button>
+              
+              <div style={{marginTop: '10px'}}>
+                <input
+                type="checkbox"
+                style={{width: '23px', height: '23px', marginLeft: '20px'}}
+                checked={onlyNotDone}
+                onChange={() => {setOnlyNotDone(onlyNotDone ? false : true)}}
+                />
+                <label htmlFor="" style={{color: 'white', marginLeft: '10px'}}>Only not done yet</label>
+              </div>
+              
           </section>
           
           <section className='itemBox'>
             <section className='itemList'>
               {
-                taskList.map((item) => (
-                  <div key={item.id}>
-                    <Item
-                    id={item.id}
-                    description={item.description}
-                    done={item.done}
-                    onDelete={deleteTask}
-                    onEdit={editTask}
-                    onUpdate={updateTaskDone}
-                    />
-                  </div>
-                ))
+                taskList.map((item) => {
+                  
+                  if (!onlyNotDone) { // Render normal
+                    return renderItem(item)
+                  }
+                  
+                  if (item.done === false) {
+                    return renderItem(item)
+                  }
+                  
+                  
+                })
               }
             </section>
           </section>

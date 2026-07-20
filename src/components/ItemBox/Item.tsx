@@ -20,7 +20,7 @@ function Item(props: ItemProps) {
 
     return (
         <>
-            <div className='itemBoxContent'>
+            <div className='itemBoxContent' style={{backgroundColor: props.done ? 'darkgrey' : 'white'}}>
                 <section>
 
                     <ItemBar
